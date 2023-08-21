@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-between align-items-centers">
+  <h1>Tweets</h1>
+
+  <% if Current.user.twitter_accounts.any? %>
+    <%= button_to "Schedule a Tweet", new_tweet_path, method: :get, data: { turbo: "false" }, class: "btn btn-primary" %>
+  <% end %>
+
+  <% if Current.user.twitter_accounts.none? %>
+    <%= button_to "Connect a Twitter Account", "/auth/twitter", method: :post, data: { turbo: "false" }, class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<%= render @tweets %>
